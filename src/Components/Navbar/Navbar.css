@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 40%;
+    padding: 20px 50px;
+    border-bottom: 1px solid #b67c4d;
+    background-color: #ebdfc7;
+    position: fixed;
+    z-index: 3;
+    
+}
+
+.logoName{
+    text-transform: uppercase;
+    font-size: 35px;
+    font-weight: 900;
+}
+
+.navbarItems{
+    font-family: "Londrina Solid", sans-serif;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+
+.navbarItems .navbarItem{
+    letter-spacing: 1px;
+    /* opacity:0 */
+}
+
+.navbarItems .navbarItem a{
+    text-decoration: none;
+    color: #b9631e;
+    font-weight: 400;
+    cursor: pointer;
+}

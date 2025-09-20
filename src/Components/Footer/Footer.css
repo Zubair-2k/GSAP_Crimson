@@ -1,0 +1,71 @@
+.footer{
+    background-color: #81512a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 30px; */
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 6;
+    /* padding: 10px 0 15px 0; */
+    height: 230px;
+}
+
+.footerLogoName{
+    color: white;
+    font-size: 40px;
+}
+
+.footerNavItems{
+    display: flex;
+    list-style-type: none;
+    gap: 50px;
+}
+
+.footerNavItems li a{
+    text-decoration: none;
+    color: #ffedde;
+}
+
+.footerSocialMedia{
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.footerSocialMedia .footerInstagram{
+    color: #ffedde;
+    cursor: pointer;
+}
+
+.footerSocialMedia .footerInstagram:hover i{
+    color: #d12251;
+    transform: scale(1.2);
+}
+
+.footerSocialMedia .footerLinkedIn{
+    color: #ffedde;
+    cursor: pointer;
+}
+
+.footerSocialMedia .footerLinkedIn:hover i{
+    color: rgb(71, 162, 237);
+    transform: scale(1.2);
+}
+
+.footerSocialMedia .footerTwitter{
+    color: #ffedde;
+    cursor: pointer;
+}
+
+.footerSocialMedia .footerTwitter:hover i{
+    color: rgb(0, 162, 255);
+    transform: scale(1.2);
+}
+
+/* .footerSocialMedia {
+    text-decoration: none;
+    color: #ffedde;
+} */

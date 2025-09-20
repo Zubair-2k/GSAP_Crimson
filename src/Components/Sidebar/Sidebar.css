@@ -1,0 +1,51 @@
+.sidebar{
+    /* background-color: red; */
+    width: 80px;
+    height: 100vh;
+    background-color: #ebdfc7;
+    position: fixed;
+    z-index: -1;
+    border-right: 1px solid #b67c4d;
+    z-index: 2;
+}
+
+.socialMedia{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+    padding: 120px 0 0 0;
+}
+
+.instagram,.linkedIn,.twitter{
+    padding: 6px;
+    text-align: center;
+    border: 2px solid #b67c4d;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.instagram:hover{
+    background-color: #b67c4d;
+}
+
+.instagram:hover i{
+    color: #ebdfc7;
+}
+
+.linkedIn:hover{
+    background-color: #b67c4d;
+}
+
+.linkedIn:hover i{
+    color: #ebdfc7;
+}
+
+.twitter:hover{
+    background-color: #b67c4d;
+}
+
+.twitter:hover i{
+    color: #ebdfc7;
+}

@@ -1,0 +1,106 @@
+.about{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 700px;
+    padding: 0 20px 0 80px;
+    border-bottom: 1px solid #b67c4d;
+    position: relative;
+}
+
+.heritageLine{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heritageLine .ourSelection{
+    /* font-family: "Londrina Solid", sans-serif; */
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+
+.heritageLine .heritageHeading{
+    font-size: 70px;
+    width: 90%;
+}
+
+.heritageLine .heritageSubtext{
+    padding: 30px 0;
+    font-family: "Londrina Solid", sans-serif;
+    color: black;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.heritageLine .exploreAllBtn{
+    font-family: "Londrina Solid", sans-serif;
+    padding: 10px;
+    width: 25%;
+    background-color: #b9631e;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.aboutBottleImg{
+    width: 30%;
+}
+
+/* .aboutBottleLogo{
+    position: fixed;
+    top: 21%;
+    left: 37.1%;
+    width: 400px;
+    opacity: 0;
+} */
+
+.brewedWith{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.brewedWithHeading{
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 60px 0 0 0;
+}
+
+.brewedItems{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.brewedItem{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brewedItem .brewedQuantity{
+    font-size: 30px;
+    color: #9a7a24;
+}
+
+.brewedItem .brewedItemDetails{
+    width: 70%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.brewedItem .brewedItemSubText{
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 300;
+}
