@@ -67,7 +67,7 @@ const Header = ({ bottleRef }) => {
                 scrub:true,
                 // markers: true,
             }
-        })
+        },"+=0.2")
 
         tl.fromTo(".stampLogo",{
             x:0,
