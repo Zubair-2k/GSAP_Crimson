@@ -136,7 +136,7 @@ const Timelines = ({bottleRef}) => {
             <div className="timelineOne">
                 
                 <div className="timelineOneImg">
-                    <img src={`${process.env.PUBLIC_URL}/first_batch.png`} alt="timelineImg" className='timelineLogo'/>
+                    <img src={`${import.meta.env.BASE_URL}first_batch.png`} alt="timelineImg" className='timelineLogo'/>
                     <div className="timelineOneYear">1984</div>
                 </div>
 
@@ -162,7 +162,7 @@ const Timelines = ({bottleRef}) => {
                 </div>
                 
                 <div className="timelineTwoImg">
-                    <img src={`${process.env.PUBLIC_URL}/first_batch.png`} alt="timelineImg" className='timelineLogo'/>
+                    <img src={`${import.meta.env.BASE_URL}first_batch.png`} alt="timelineImg" className='timelineLogo'/>
                     <div className="timelineTwoYear">1989</div>
                 </div>
 
