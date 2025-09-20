@@ -12,6 +12,7 @@ const Bottle = forwardRef((_, bottleRef) => {
             rotation: 18,
             opacity:0,
             scale:0,
+            delay:3,
         })
 
     gsap.to(bottleRef.current,{
@@ -22,7 +23,6 @@ const Bottle = forwardRef((_, bottleRef) => {
             opacity:1,
             scale:1,
             duration:1,
-            delay:7,
         })
   })
 
