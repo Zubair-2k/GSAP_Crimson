@@ -97,7 +97,7 @@ const Header = ({ bottleRef }) => {
                 {/* <img src="/bottleImg.png" alt="BottleLogo" className='bottleLogo'/> */}
             </div>
             <div className="stampImg">
-                <img src="/stamp.png" alt="StampImg" className='stampLogo'/>
+                <img src={`${process.env.PUBLIC_URL}/stamp.png`} alt="StampImg" className='stampLogo'/>
             </div>
             <div className="heading">
                 <div className='headingOne'>Crimson</div> 

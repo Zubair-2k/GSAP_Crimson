@@ -29,7 +29,7 @@ const Bottle = forwardRef((_, bottleRef) => {
   return (
     <>
         <div className="bottle">
-            <img ref={bottleRef} src="/bottleImg.png" alt="Bottle-Img" className='bottleImg'/>
+            <img ref={bottleRef} src={`${process.env.PUBLIC_URL}/bottleImg.png`} alt="Bottle-Img" className='bottleImg'/>
         </div>
     </>
   )
