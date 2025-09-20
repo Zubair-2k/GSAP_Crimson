@@ -22,7 +22,7 @@ const Bottle = forwardRef((_, bottleRef) => {
             opacity:1,
             scale:1,
             duration:1,
-            delay:8,
+            delay:3,
         })
   })
 
