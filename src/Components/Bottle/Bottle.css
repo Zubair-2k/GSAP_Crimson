@@ -1,12 +1,53 @@
-.bottle{
-    position: fixed;
-    top: 15%;
-    left: 34.7%;
-    z-index: 8;
-    margin: 0 0 100px 0;
+.bottle {
+  position: fixed;
+  top: 55%;
+  left: 48%;
+  transform: translate(-50%,-50%);
+  z-index: 8;
 }
 
-.bottleImg{
-    width: 400px;
-    transform: rotateZ(18deg);
+.bottleImg {
+  opacity: 0;
+  scale: 0;
+  /* width: 600px; */
+  transform: rotateZ(18deg);
+}
+
+
+/* ≤ 1200px  */
+
+@media (max-width: 1200px) {
+
+  .bottleImg {
+    width: 320px; 
+  } 
+
+}
+
+/* ≤ 992px (laptops) */
+@media (max-width: 992px) {
+  .bottle{
+    display: none;
+  }
+}
+
+/* ≤ 768px (tablets) */
+@media (max-width: 768px) {
+  .bottleImg {
+     width: 260px; 
+     transform: rotate(0deg); 
+  } 
+}
+
+/* ≤ 576px (mobile) */
+@media (max-width: 576px) {
+  
+}
+
+@media (max-width: 480px) {
+
+   /* .bottleImg { 
+    width: 220px;
+   }  */
+
 }

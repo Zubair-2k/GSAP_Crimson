@@ -1,15 +1,14 @@
-import React from 'react'
 import "./About.css"
-import { useEffect } from "react"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger)
 
 
 const About = ({ bottleRef }) => {
 
-    useEffect(()=>{
+    useGSAP(()=>{
         
         if(!bottleRef?.current) return;
 
@@ -82,14 +81,14 @@ const About = ({ bottleRef }) => {
 
         gsap.from(bottleRef.current,{
             x:60,
-            y:50,
-            width: 350,
-            rotation: 0
+            // y:50,
+            width: 380,
+            rotation: 1
         })
         
         gsap.to(bottleRef.current,
             {
-            x:500,
+            x:400,
             width: 280,
             rotation: 10,
             scrollTrigger:{
@@ -105,7 +104,7 @@ const About = ({ bottleRef }) => {
 
   return (
     <>
-        <div className="about">
+        <div className="about" id="Feature">
             <div className="heritageLine">
             
                 <div className="hl ourSelection">Our Selection</div>

@@ -2,10 +2,11 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 700px;
+    min-height: 100vh; /* full viewport height */
     padding: 0 20px 0 80px;
     border-bottom: 1px solid #b67c4d;
-    position: relative;
+    gap: 60px;
+    overflow: hidden;
 }
 
 .heritageLine{
@@ -14,6 +15,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 20px;
 }
 
 .heritageLine .ourSelection{
@@ -29,7 +31,7 @@
 }
 
 .heritageLine .heritageSubtext{
-    padding: 30px 0;
+    /* padding: 30px 0; */
     font-family: "Londrina Solid", sans-serif;
     color: black;
     font-size: 15px;
@@ -103,4 +105,50 @@
     font-size: 14px;
     color: black;
     font-weight: 300;
+}
+
+/* ≤ 1200px  */
+
+@media (max-width: 1200px) {
+
+  
+}
+
+@media (max-width: 992px) {
+  .about {
+    flex-direction: column;
+    height: auto;
+    padding: 60px 20px;
+    gap: 60px;
+  }
+
+  .heritageLine,
+  .aboutBottleImg,
+  .brewedWith {
+    width: 100%;
+  }
+
+  .heritageLine .heritageHeading {
+    font-size: 50px;
+  }
+}
+
+/* ≤ 768px (tablets) */
+@media (max-width: 768px) {
+  
+}
+
+/* ≤ 576px (mobile) */
+@media (max-width: 576px) {
+  
+}
+
+@media (max-width: 480px) {
+  .heritageLine .heritageHeading {
+    font-size: 36px;
+  }
+
+  .heritageLine .exploreAllBtn {
+    width: 50%;
+  }
 }

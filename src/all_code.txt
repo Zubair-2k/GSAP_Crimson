@@ -1,0 +1,718 @@
+import './App.css' import { useRef } from "react" import About from './Components/About/About' import Bottle from './Components/Bottle/Bottle' import Footer from './Components/Footer/Footer' import Header from './Components/Header/Header' import Navbar from './Components/Navbar/Navbar' import Sidebar from './Components/Sidebar/Sidebar' import Timelines from './Components/Timelines/Timelines' function App() { const bottleRef = useRef() return ( <> <Navbar /> <Sidebar /> <Bottle ref={bottleRef}/> <Header bottleRef={bottleRef}/> <About bottleRef={bottleRef}/> <Timelines bottleRef={bottleRef}/> <Footer /> </> ) } export default App in App.jsx 
+/* #root { max-width: 1280px; margin: 0 auto; padding: 2rem; text-align: center; } */ body{ position: relative; } in app.css 
+import React, { useEffect } from 'react' import "./Navbar.css" import { gsap } from "gsap"; const Navbar = () => { useEffect(()=>{ gsap.fromTo(".logo",{ opacity:0, },{ opacity:1, duration:2, delay:0.2 }) gsap.fromTo(".navbarItem", {y:-100,opacity:0}, { y:0, opacity:1, duration:0.5, ease:"power1.out", stagger:0.5 }) },[]) return ( <> <nav className="navbar"> <div className="logo"> <h2 className='logoName'>Craftedge</h2> </div> <ul className="navbarItems"> <li className='navbarItem'><a href="">Home</a></li> <li className='navbarItem'><a href="">Features</a></li> <li className='navbarItem'><a href="">Product</a></li> <li className='navbarItem'><a href="">Contact</a></li> </ul> </nav> </> ) } export default Navbar in Navbar.jsx ,
+*{ margin: 0; padding: 0; } .navbar{ /* font-family: Verdana, Geneva, Tahoma, sans-serif; */ width: 95%; display: flex; align-items: center; justify-content: space-evenly; gap: 40%; padding: 20px 50px; border-bottom: 1px solid #b67c4d; background-color: #ebdfc7; position: fixed; z-index: 3; } .logoName{ text-transform: uppercase; font-size: 35px; font-weight: 900; } .navbarItems{ font-family: "Londrina Solid", sans-serif; list-style: none; display: flex; align-items: center; gap: 100px; } .navbarItems .navbarItem{ letter-spacing: 1px; /* opacity:0 */ } .navbarItems .navbarItem a{ text-decoration: none; color: #b9631e; font-weight: 400; cursor: pointer; } in Navbar.css,
+import { forwardRef, useEffect } from 'react' import "./Bottle.css" import { gsap } from "gsap"; const Bottle = forwardRef((_, bottleRef) => { useEffect(()=>{ gsap.from(bottleRef.current,{ x:0, y:0, width: 400, rotation: 18, opacity:0, scale:0, }) gsap.to(bottleRef.current,{ x:0, y:0, width: 400, rotation: 18, opacity:1, scale:1, duration:1, delay:3, }) }) return ( <> <div className="bottle"> <img ref={bottleRef} src={${import.meta.env.BASE_URL}bottleImg.png} alt="Bottle-Img" className='bottleImg'/> </div> </> ) }); export default Bottle in Bottle.jsx,
+.bottle{ position: fixed; top: 15%; left: 34.7%; z-index: 8; margin: 0 0 100px 0; } .bottleImg{ width: 400px; transform: rotateZ(18deg); } in Bottle.css,
+import { useEffect, useRef, useState } from "react" import "./Header.css" import { gsap } from "gsap"; import { ScrollTrigger } from "gsap/ScrollTrigger" gsap.registerPlugin(ScrollTrigger); const Header = ({ bottleRef }) => { const [isAnimating, setIsAnimating] =useState(true) useEffect(()=>{ window.scrollTo(0,0); if(!bottleRef?.current) return; document.body.style.overflow="hidden"; const tl = gsap.timeline( { onComplete: () =>{ document.body.style.overflow="auto"; setIsAnimating(false); } } ); // var headingRef = useRef(null) tl.fromTo(".headingOne",{ opacity:0, x:300, },{ opacity:1, x:0, delay:2, // zIndex:0 }) tl.fromTo(".headingTwo",{ opacity:0, x:300, },{ opacity:1, x:0, // zIndex:0 }) tl.from(bottleRef.current,{ x:0, y:0, width: 400, rotation: 18, }) tl.to(bottleRef.current,{ x:60, y:50, width: 350, rotation: 0, scrollTrigger:{ trigger: ".header", start: "10%", end: "100%", scrub:true, // markers: true, } }) tl.fromTo(".stampLogo",{ x:0, y:0, scale:10, opacity:0, // zIndex: 100 },{ x:0, y:0, scale:1, opacity:1, delay:0.5 // zIndex: 100 }) return () =>{ document.body.style.overflow = "auto"; } },[]) return ( <> <div className="header"> <div className="bottleImg"> {/* <img src="/bottleImg.png" alt="BottleLogo" className='bottleLogo'/> */} </div> <div className="stampImg"> <img src={${import.meta.env.BASE_URL}stamp.png} alt="StampImg" className='stampLogo'/> </div> <div className="heading"> <div className='headingOne'>Crimson</div> <div className='headingTwo'>Fermentation</div> </div> </div> </> ) } export default Header in Header.jsx,
+.header{ font-family: fa-crimson; font-size: 150px; position: relative; height: 775px; border-bottom: 1px solid #b67c4d; } /* .bottleImg{ position: fixed; top: 15%; left: 35%; left: 34.7%; } */ /* .bottleLogo{ width: 400px; width: 400px; height: 10px; transform: rotateZ(20deg); transform: rotateZ(18deg); } */ .stampImg{ position: absolute; /* top: 200px; left: 597px; */ top: 26%; left: 38.8%; z-index: 1; } .stampLogo{ width: 115px; transform: rotateZ(-15deg); } .heading{ height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; } .headingOne,.headingTwo{ line-height: 0.8; } in Header.css,
+import React,{useEffect} from 'react' import "./Sidebar.css" import { gsap } from "gsap"; const Sidebar = () => { useEffect(()=>{ gsap.fromTo(".socialMedia div", {y:-100,opacity:0}, { y:0, opacity:1, duration:0.6, ease:"power1.out", stagger:0.7 }) },[]) return ( <> <div className="sidebar"> <div className="socialMedia"> <div className="instagram"> <i class="fa-brands fa-instagram"></i> </div> <div className="linkedIn"> <i class="fa-brands fa-linkedin"></i> </div> <div className="twitter"> <i class="fa-brands fa-twitter"></i> </div> </div> </div> </> ) } export default Sidebar in Sidebar.jsx,
+.sidebar{ /* background-color: red; */ width: 80px; height: 100vh; background-color: #ebdfc7; position: fixed; z-index: -1; border-right: 1px solid #b67c4d; z-index: 2; } .socialMedia{ display: flex; flex-direction: column; justify-content: flex-start; align-items: center; gap: 40px; padding: 120px 0 0 0; } .instagram,.linkedIn,.twitter{ padding: 6px; text-align: center; border: 2px solid #b67c4d; border-radius: 50%; cursor: pointer; } .instagram:hover{ background-color: #b67c4d; } .instagram:hover i{ color: #ebdfc7; } .linkedIn:hover{ background-color: #b67c4d; } .linkedIn:hover i{ color: #ebdfc7; } .twitter:hover{ background-color: #b67c4d; } .twitter:hover i{ color: #ebdfc7; } in Sidebar.css
+import React from 'react'
+import "./Timelines.css"
+import { useEffect } from "react"
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+const Timelines = ({bottleRef}) => {
+
+    useEffect(()=>{
+
+        // const tl =gsap.timeline()
+        
+        if(!bottleRef?.current) return;
+
+        gsap.fromTo(".timelineHeading",
+            {
+                // x:-80,
+                opacity:0
+            },
+            {
+                // x:0,
+                opacity:1,
+                scrollTrigger:{
+                    trigger: ".timelines",
+                    start: "-38%",
+                    end: "-15%",
+                    scrub:true,
+                    // markers: true,
+                },
+            })
+
+        gsap.fromTo(".timelineOneImg",
+            {
+                x:-80,
+                opacity:0
+            },
+            {
+                x:0,
+                opacity:1,
+                scrollTrigger:{
+                    trigger: ".timelines",
+                    start: "3%",
+                    end: "18%",
+                    scrub:true,
+                    // markers: true,
+                },
+            })
+            gsap.fromTo(".tOnedetail",
+                {
+                    x:-50,
+                    // y:-50,
+                    opacity:0
+                },
+                {
+                    x:0,
+                    // y:0,
+                    opacity:1,
+                    stagger:2,
+                    scrollTrigger:{
+                        trigger: ".timelines",
+                        start: "16%",
+                        end: "23%",
+                        scrub:true,
+                        // markers: true,
+                    },
+                })
+                gsap.fromTo(".timelineTwoImg",
+                    {
+                        x:80,
+                        opacity:0
+                    },
+                    {
+                        x:0,
+                        opacity:1,
+                        scrollTrigger:{
+                            trigger: ".timelines",
+                            start: "40%",
+                            end: "46%",
+                            scrub:true,
+                            // markers: true,
+                        },
+                    })
+                gsap.fromTo(".tTwodetail",
+                    {
+                        x:50,
+                        // y:-50,
+                        opacity:0
+                    },
+                    {
+                        x:0,
+                        // y:0,
+                        opacity:1,
+                        stagger:2,
+                        scrollTrigger:{
+                            trigger: ".timelines",
+                            start: "46%",
+                            end: "53%",
+                            scrub:true,
+                            // markers: true,
+                        },
+                    })
+
+        gsap.set(bottleRef.current,{
+            x:500,
+            // y:50,
+            width: 280,
+            rotation: 10
+        })
+        
+        gsap.to(bottleRef.current,
+            {
+            x:-300,
+            // y:50,
+            width: 280,
+            rotation: -10,
+            scrollTrigger:{
+                trigger: ".timelines",
+                start: "25%",
+                end: "60%",
+                scrub:true,
+                // markers: true,
+            },
+        })
+
+    },[bottleRef])
+
+  return (
+    <>
+        <div className="timelines">
+            <div className="timelineHeading">
+                Our Timeline
+            </div>
+
+            <div className="timelineOne">
+                
+                <div className="timelineOneImg">
+                    <img src={`${import.meta.env.BASE_URL}first_batch.png`} alt="timelineImg" className='timelineLogo'/>
+                    <div className="timelineOneYear">1984</div>
+                </div>
+
+                <div className="timelineOneDetails">
+                    <div className="tOnedetail timelineOneName">The First Batch</div>
+                    <div className="tOnedetail timelineOneSubText">Our journey began in a wooden barn nestled among oak trees. The first batch was brewed with hand-milted barley and patience.</div>
+                </div>
+
+                <div className="timelineOneBottleImg">
+                    {/* <img src="/bottleImg.png" alt="" className='timelineOneBottleLogo'/> */}
+                </div>
+            </div>
+
+            <div className="timelineTwo">
+
+                <div className="timelineTwoBottleImg">
+                    {/* <img src="/bottleImg.png" alt=""  className='timelineTwoBottleLogo'/> */}
+                </div>
+
+                <div className="timelineTwoDetails">
+                    <div className="tTwodetail timelineTwoName">The Fire Oak Revival</div>
+                    <div className="tTwodetail timelineTwoSubText">A lightning storm sparked a fire that nearly ended our legacy. But from  the ashes, we rebuilt charred oak barrels, reclaimed tools, and a vow to never comprommise the craft.</div>
+                </div>
+                
+                <div className="timelineTwoImg">
+                    <img src={`${import.meta.env.BASE_URL}first_batch.png`} alt="timelineImg" className='timelineLogo'/>
+                    <div className="timelineTwoYear">1989</div>
+                </div>
+
+
+            </div>
+        </div>
+    </>
+  )
+}
+
+export default Timelines in Timelines.jsx,
+
+.timelines{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* align-items: center; */
+    gap: 300px;
+    padding: 120px 80px 50px 110px;
+    /* margin: 0 0 -220px 0; */
+}
+
+.timelineHeading{
+    font-size: 150px;
+}
+
+.timelineOne{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    gap: 50px;
+}
+
+.timelineOne .timelineOneImg{
+    position: relative;
+}
+
+.timelineOne .timelineOneYear{
+    position: absolute;
+    top: -15%;
+    left: 36%;
+    font-size: 45px;
+}
+
+.timelineOne .timelineLogo{
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+    margin: 10px 0 0 20px;
+    box-shadow: 1px 2px 0px 4px;
+}
+
+.timelineOneDetails{
+    padding: 20px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timelineOneDetails .timelineOneName{
+    font-size: 18px;
+}
+
+.timelineOneDetails .timelineOneSubText{
+    /* font-size: 18px; */
+    font-family: "Londrina Solid", sans-serif;
+    font-weight: 300;
+    color: black;
+    width: 70%;
+}
+
+
+.timelineTwo{
+    display: flex;
+    justify-content: space-between;
+    height: 60%;
+    /* margin: 0 0 -200px 0; */
+    /* align-items: center; */
+    /* gap: 50px; */
+}
+
+.timelineTwo .timelineTwoImg{
+    position: relative;
+}
+
+.timelineTwo .timelineTwoYear{
+    position: absolute;
+    top: -15%;
+    left: 36%;
+    font-size: 45px;
+}
+
+.timelineTwo .timelineLogo{
+    width: 150px;
+    height: 150px;
+    padding: 5px;
+    margin: 10px 0 0 20px;
+    box-shadow: 1px 2px 0px 4px;
+}
+
+.timelineTwoDetails{
+    padding: 20px 0 0 0;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.timelineTwoDetails .timelineTwoName{
+    font-size: 18px;
+}
+
+.timelineTwoDetails .timelineTwoSubText{
+    /* font-size: 18px; */
+    font-family: "Londrina Solid", sans-serif;
+    font-weight: 300;
+    color: black;
+    /* width: 70%; */
+}
+
+.timelineOneBottleImg{
+    width: 40%;
+}
+
+.timelineTwoBottleImg{
+    width: 55%;
+}
+
+.timelineOneBottleLogo{
+    position: relative;
+    top: -130px;
+    left: 0;
+    width: 70%;
+    transform: rotateZ(10deg);
+}
+
+.timelineTwoBottleLogo{
+    position: relative;
+    top: -170px;
+    left: 100px;
+    width: 50%;
+    transform: rotateZ(-10deg);
+} in Timelines.css,
+
+import React from 'react'
+import "./About.css"
+import { useEffect } from "react"
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+gsap.registerPlugin(ScrollTrigger)
+
+
+const About = ({ bottleRef }) => {
+
+    useEffect(()=>{
+        
+        if(!bottleRef?.current) return;
+
+        gsap.fromTo(".hl",{
+            y:-40,
+            opacity:0
+        },{
+            y:0,
+            opacity:1,
+            duration:0.8,
+            stagger:1,
+            scrollTrigger:{
+                trigger: ".about",
+                start: "-60%",
+                end: "0%",
+                scrub:true,
+                // markers: true,
+            }
+        })
+
+        gsap.fromTo(".bw",{
+            y:-40,
+            opacity:0
+        },{
+            y:0,
+            opacity:1,
+            duration:0.1,
+            scrollTrigger:{
+                trigger: ".about",
+                start: "-60%",
+                end: "-50%",
+                scrub:true,
+                // markers: true,
+            }
+        })
+
+        gsap.fromTo(".bq",{
+            x:-50,
+            opacity:0
+        },{
+            x:0,
+            opacity:1,
+            duration:1,
+            stagger:2,
+            scrollTrigger:{
+                trigger: ".about",
+                start: "-60%",
+                end: "-10%",
+                scrub:true,
+                // markers: true,
+            }
+        })
+
+        gsap.fromTo(".bi",{
+            x:50,
+            opacity:0
+        },{
+            x:0,
+            opacity:1,
+            duration:1,
+            stagger:2,
+            scrollTrigger:{
+                trigger: ".about",
+                start: "-60%",
+                end: "-10%",
+                scrub:true,
+                // markers: true,
+            }
+        })
+
+        gsap.from(bottleRef.current,{
+            x:60,
+            y:50,
+            width: 350,
+            rotation: 0
+        })
+        
+        gsap.to(bottleRef.current,
+            {
+            x:500,
+            width: 280,
+            rotation: 10,
+            scrollTrigger:{
+                trigger: ".about",
+                start: "0%",
+                end: "145%",
+                scrub:true,
+                // markers: true,
+            }
+        })
+
+    },[])
+
+  return (
+    <>
+        <div className="about">
+            <div className="heritageLine">
+            
+                <div className="hl ourSelection">Our Selection</div>
+
+                <div className="hl heritageHeading">The Heritage Line</div>
+
+                <div className="hl heritageSubtext">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet quae aliquid totam voluptate iste dicta qui quidem minima nihil consectetur?</div>
+            
+                <button className='hl exploreAllBtn'>Explore All</button>
+            
+            </div>
+
+            <div className="aboutBottleImg">
+                {/* <img src="/bottleImg.png" alt="" className='aboutBottleLogo'/> */}
+            </div>
+
+            <div className="brewedWith">
+                
+                <div className="bw brewedWithHeading">Brewed With</div>
+
+                <div className="brewedItems">
+                    
+                    <div className="brewedItem">
+                        <div className="bq brewedQuantity">500ml</div>
+                        <div className="bi brewedItemDetails">
+                            <div className="brewedItemName">Spring Water</div>
+                            <div className="brewedItemSubText">Pure glacier-sources for clarity and smoothness.</div>
+                        </div>
+                    </div>
+                    
+                    <div className="brewedItem">
+                        <div className="bq brewedQuantity">250g</div>
+                        <div className="bi brewedItemDetails">
+                            <div className="brewedItemName">Organic Barley</div>
+                            <div className="brewedItemSubText">Locally malted for a rich. golden body.</div>
+                        </div>
+                    </div>
+                    
+                    <div className="brewedItem">
+                        <div className="bq brewedQuantity">100g</div>
+                        <div className="bi brewedItemDetails">
+                            <div className="brewedItemName">Wild Hops</div>
+                            <div className="brewedItemSubText">Foraged from mountain slopes, slow-dried.</div>
+                        </div>
+                    </div>
+                    
+                    <div className="brewedItem">
+                        <div className="bq brewedQuantity">50g</div>
+                        <div className="bi brewedItemDetails">
+                            <div className="brewedItemName">Roasted Oak</div>
+                            <div className="brewedItemSubText">Infused for warmth and oaky aroma.</div>
+                        </div>
+                    </div>
+                    
+                    <div className="brewedItem">
+                        <div className="bq brewedQuantity">1%</div>
+                        <div className="bi brewedItemDetails">
+                            <div className="brewedItemName">Natural Yeast</div>
+                            <div className="brewedItemSubText">Wild fermented, slow-aged for balance.</div>
+                        </div>
+                    </div>
+                
+                </div>
+
+            </div>
+        </div>
+    </>
+  )
+}
+
+export default About in About.jsx,
+
+.about{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 700px;
+    padding: 0 20px 0 80px;
+    border-bottom: 1px solid #b67c4d;
+    position: relative;
+}
+
+.heritageLine{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.heritageLine .ourSelection{
+    /* font-family: "Londrina Solid", sans-serif; */
+    text-transform: uppercase;
+    font-size: 15px;
+    letter-spacing: 3px;
+}
+
+.heritageLine .heritageHeading{
+    font-size: 70px;
+    width: 90%;
+}
+
+.heritageLine .heritageSubtext{
+    padding: 30px 0;
+    font-family: "Londrina Solid", sans-serif;
+    color: black;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+.heritageLine .exploreAllBtn{
+    font-family: "Londrina Solid", sans-serif;
+    padding: 10px;
+    width: 25%;
+    background-color: #b9631e;
+    border: none;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.aboutBottleImg{
+    width: 30%;
+}
+
+/* .aboutBottleLogo{
+    position: fixed;
+    top: 21%;
+    left: 37.1%;
+    width: 400px;
+    opacity: 0;
+} */
+
+.brewedWith{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.brewedWithHeading{
+    text-transform: uppercase;
+    font-size: 25px;
+    font-weight: 900;
+    padding: 60px 0 0 0;
+}
+
+.brewedItems{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.brewedItem{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.brewedItem .brewedQuantity{
+    font-size: 30px;
+    color: #9a7a24;
+}
+
+.brewedItem .brewedItemDetails{
+    width: 70%;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+}
+
+.brewedItem .brewedItemSubText{
+    font-family: "Londrina Solid", sans-serif;
+    font-size: 14px;
+    color: black;
+    font-weight: 300;
+}
+in about.css,
+
+import React from 'react'
+import "./Footer.css"
+
+const Footer = () => {
+  return (
+    <>
+        <div className="footer">
+            
+            <div className="footerLogoName">Craftedge</div>
+
+            <ul className="footerNavItems">
+                <li><a href="">Home</a></li>
+                <li><a href="">Features</a></li>
+                <li><a href="">Product</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+
+            <div className="footerSocialMedia">
+                <div className="footerInstagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div className="footerLinkedIn">
+                    <i class="fa-brands fa-linkedin"></i>
+                </div>
+                <div className="footerTwitter">
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+            </div>
+        </div>
+    </>
+  )
+}
+
+export default Footer in Footer.jsx,
+
+.footer{
+    background-color: #81512a;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* gap: 30px; */
+    position: relative;
+    bottom: 0;
+    left: 0;
+    z-index: 6;
+    /* padding: 10px 0 15px 0; */
+    height: 230px;
+}
+
+.footerLogoName{
+    color: white;
+    font-size: 40px;
+}
+
+.footerNavItems{
+    display: flex;
+    list-style-type: none;
+    gap: 50px;
+}
+
+.footerNavItems li a{
+    text-decoration: none;
+    color: #ffedde;
+}
+
+.footerSocialMedia{
+    display: flex;
+    list-style-type: none;
+    gap: 20px;
+}
+
+.footerSocialMedia .footerInstagram{
+    color: #ffedde;
+    cursor: pointer;
+}
+
+.footerSocialMedia .footerInstagram:hover i{
+    color: #d12251;
+    transform: scale(1.2);
+}
+
+.footerSocialMedia .footerLinkedIn{
+    color: #ffedde;
+    cursor: pointer;
+}
+
+.footerSocialMedia .footerLinkedIn:hover i{
+    color: rgb(71, 162, 237);
+    transform: scale(1.2);
+}
+
+.footerSocialMedia .footerTwitter{
+    color: #ffedde;
+    cursor: pointer;
+}
+
+.footerSocialMedia .footerTwitter:hover i{
+    color: rgb(0, 162, 255);
+    transform: scale(1.2);
+}
+
+/* .footerSocialMedia {
+    text-decoration: none;
+    color: #ffedde;
+} */ 
+in footer.css
+
+
+
+ make this same code responsive without changing the code

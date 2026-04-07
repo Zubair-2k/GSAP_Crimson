@@ -3,12 +3,13 @@ import "./Timelines.css"
 import { useEffect } from "react"
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollTrigger)
 
 const Timelines = ({bottleRef}) => {
 
-    useEffect(()=>{
+    useGSAP(()=>{
 
         // const tl =gsap.timeline()
         
@@ -95,15 +96,15 @@ const Timelines = ({bottleRef}) => {
                         stagger:2,
                         scrollTrigger:{
                             trigger: ".timelines",
-                            start: "46%",
-                            end: "53%",
+                            start: "43%",
+                            end: "46%",
                             scrub:true,
                             // markers: true,
                         },
                     })
 
         gsap.set(bottleRef.current,{
-            x:500,
+            x:400,
             // y:50,
             width: 280,
             rotation: 10
@@ -111,7 +112,7 @@ const Timelines = ({bottleRef}) => {
         
         gsap.to(bottleRef.current,
             {
-            x:-300,
+            x:-250,
             // y:50,
             width: 280,
             rotation: -10,
@@ -128,7 +129,7 @@ const Timelines = ({bottleRef}) => {
 
   return (
     <>
-        <div className="timelines">
+        <div className="timelines" id="History">
             <div className="timelineHeading">
                 Our Timeline
             </div>
@@ -136,7 +137,7 @@ const Timelines = ({bottleRef}) => {
             <div className="timelineOne">
                 
                 <div className="timelineOneImg">
-                    <img src={`${import.meta.env.BASE_URL}first_batch.png`} alt="timelineImg" className='timelineLogo'/>
+                    <img src={`${import.meta.env.BASE_URL}first_batch.webp`} alt="timelineImg" className='timelineLogo'/>
                     <div className="timelineOneYear">1984</div>
                 </div>
 
@@ -162,7 +163,7 @@ const Timelines = ({bottleRef}) => {
                 </div>
                 
                 <div className="timelineTwoImg">
-                    <img src={`${import.meta.env.BASE_URL}first_batch.png`} alt="timelineImg" className='timelineLogo'/>
+                    <img src={`${import.meta.env.BASE_URL}first_batch.webp`} alt="timelineImg" className='timelineLogo'/>
                     <div className="timelineTwoYear">1989</div>
                 </div>
 

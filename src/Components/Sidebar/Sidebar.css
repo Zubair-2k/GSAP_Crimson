@@ -49,3 +49,30 @@
 .twitter:hover i{
     color: #ebdfc7;
 }
+
+/* ≤ 1200px  */
+
+@media (max-width: 1200px) {
+
+}
+
+/* ≤ 992px (laptops) */
+@media (max-width: 992px) {
+  .sidebar {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  
+}
+
+
+/* ≤ 576px (mobile) */
+@media (max-width: 576px) {
+  
+}
+
+@media (max-width: 480px) {
+
+}

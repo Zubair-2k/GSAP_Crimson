@@ -75,6 +75,13 @@ button:focus-visible {
     src: url(/Veneer.woff);
 }
 
+html,body{
+  overflow-x: hidden;
+}
+
+body{
+  visibility: hidden;
+}
   /* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
 
 html::-webkit-scrollbar {
@@ -87,6 +94,7 @@ html::-webkit-scrollbar {
 body {
     scrollbar-width: none;
 }
+
 
 /* html,body{
   width: 100%;

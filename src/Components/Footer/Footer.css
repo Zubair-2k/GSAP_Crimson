@@ -69,3 +69,34 @@
     text-decoration: none;
     color: #ffedde;
 } */
+
+/* ≤ 1200px  */
+
+@media (max-width: 1200px) {
+
+}
+
+/* ≤ 992px (laptops) */
+@media (max-width: 992px) {
+}
+
+@media (max-width: 768px) {
+  .footerNavItems {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .footerLogoName {
+    font-size: 30px;
+  }
+}
+
+/* ≤ 576px (mobile) */
+@media (max-width: 576px) {
+}
+
+@media (max-width: 480px) {
+
+
+}

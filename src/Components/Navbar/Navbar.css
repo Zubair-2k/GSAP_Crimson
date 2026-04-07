@@ -43,3 +43,55 @@
     font-weight: 400;
     cursor: pointer;
 }
+
+/* ≤ 1200px  */
+@media (max-width: 1200px) {
+
+
+}
+
+/* ≤ 992px (laptops) */
+@media (max-width: 992px) {
+  .navbar {
+    justify-content: space-between;
+    padding: 15px 25px;
+    gap: 0;
+  }
+
+  .navbarItems {
+    gap: 40px;
+  }
+
+  .logoName {
+    font-size: 26px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .logoName{
+    font-size: 35px;
+  }
+
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbarItems {
+    display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+/* ≤ 576px (mobile) */
+@media (max-width: 576px) {
+  
+}
+
+@media (max-width: 480px) {
+
+  
+
+}

@@ -1,49 +1,52 @@
-.header{
-    font-family: fa-crimson;
-    font-size: 150px;
-    position: relative;
-    height: 775px;
-    border-bottom: 1px solid #b67c4d;
+.header {
+  font-family: fa-crimson;
+  font-size: 150px;
+  min-height: 100vh; /* full height */
+  border-bottom: 1px solid #b67c4d;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-/* .bottleImg{
-    position: fixed;
-    top: 15%;
-    left: 35%;
-    left: 34.7%;
+.stampImg {
+  position: absolute;
+  top: 0;
+  left: 30%;
+  transform: translate(-50%,-50%);
+  z-index: 1;
+}
+
+.stampLogo { 
+  width: 115px; 
+  transform: rotateZ(-15deg); 
+}
+
+.heading { display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;}
+.headingOne, .headingTwo { line-height: 0.8; }
+
+
+/* @media (max-width: 1200px) {
+  .header { font-size: 100px; padding: 120px 20px; }
+  .stampLogo { width: 90px; }
 } */
-/* 
-.bottleLogo{
-    width: 400px;
-    width: 400px;
-    height: 10px;
-    transform: rotateZ(20deg);
-    transform: rotateZ(18deg);
-} */
 
-.stampImg{
-    position: absolute;
-    /* top: 200px;
-    left: 597px; */
-    top: 26%;
-    left: 38.8%;
-    z-index: 1;
+/* ≤ 992px (laptops) */
+@media (max-width: 992px) {
+
 }
 
-.stampLogo{
-    width: 115px;
-    transform: rotateZ(-15deg);
+@media (max-width: 768px) {
+  .header { font-size: 70px; }
+  .headingOne, .headingTwo { line-height: 1; }
 }
 
-.heading{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    
+/* ≤ 576px (mobile) */
+@media (max-width: 576px) {
+
 }
 
-.headingOne,.headingTwo{
-    line-height: 0.8;
+@media (max-width: 480px) {
+  .header { font-size: 50px; }
 }
