@@ -38,13 +38,13 @@ const Footer = () => {
 
             <div className="footerSocialMedia">
                 <div className="footerInstagram">
-                    <i class="fa-brands fa-instagram">I</i>
+                    <i class="fa-brands fa-instagram"></i>
                 </div>
                 <div className="footerLinkedIn">
-                    <i class="fa-brands fa-linkedin">L</i>
+                    <i class="fa-brands fa-linkedin"></i>
                 </div>
                 <div className="footerTwitter">
-                    <i class="fa-brands fa-twitter">T</i>
+                    <i class="fa-brands fa-twitter"></i>
                 </div>
             </div>
         </div>
